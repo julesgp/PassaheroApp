@@ -9,22 +9,39 @@ export default class InputField extends React.Component{
 			visibilityClass: ""
 		}
 	}
+	formSubmited(e){
+	    e.preventDefault();
+	    console.log("I have been submitted");
+	    // if (e.keyCode === 13) {
+	    //     e.preventDefault(); // Let's stop this event.
+	    //     e.stopPropagation();
+	    // }
+	    // console.log("I have been submitted");
+	    // // console.log("I have been submitted!");
+	    // // if(_underScore.isEmpty(this.state.destinationPlace) == true){
+	    // //     console.log('destination is empty');
+	    // // }
+	    // // if(_underScore.isEmpty(this.state.originPlace) == true){
+	    // //     console.log('origin is empty');
+	    // // }
+	}
+
 	render() {
 		return (
 			<section className='mainWrapper inputContainer'>
-				<form className="initialForm" onSubmit={this.props.forSubmition}>
+				<form className="initialForm" onSubmit={this.formSubmited}>
 
 					<div className='inputPlaces'>
 						<div className="inputOrigin">
 							<p>FROM</p>
 							<Autocomplete className="originUser"
 							    style={{width: '100%'}} onPlaceSelected={this.props.originSelected}
-							    types={['(cities)']}/>
+							    types={['(cities)']} onEnterKeyDown={this.formSubmited}/>
 						</div>
 						<div className='inputDestination'>
 							<p>TO</p>
 							<Autocomplete className="originUser"
-							    style={{width: '100%'}} onPlaceSelected = {this.props.destinationSelected} types={['(cities)']}/>
+							    style={{width: '100%'}} onPlaceSelected = {this.props.destinationSelected} types={['(cities)']} onEnterKeyDown={this.formSubmited}/>
 						</div>
 					</div>
 

@@ -4,6 +4,7 @@ import Header from './components/header.js';
 import UserInput from './components/userinput.js';
 import FlighInfo from './components/flightinfo.js';
 import {ajax} from 'jquery';
+// var _underScore = require('underscore');
 
 const getCurrentDate = () => {
     var todayFlight = new Date();
@@ -34,7 +35,8 @@ class App extends React.Component {
         this.handleOriginSelected = this.handleOriginSelected.bind(this);
         this.handleDestinationSelected = this.handleDestinationSelected.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.formSubmited = this.formSubmited.bind(this);
+        this.preventSubmition = this.preventSubmition.bind(this);
+        // this.formSubmited = this.formSubmited.bind(this);
     }
 
     handleChange(e){
@@ -76,17 +78,32 @@ class App extends React.Component {
         });
     }
 
-    formSubmited(e){
+    preventSubmition(e){
         e.preventDefault();
-        console.log("I have been submitted!");
     }
+
+    // formSubmited(e){
+    //     e.preventDefault();
+    //     if (e.keyCode === 13) {
+    //         e.preventDefault(); // Let's stop this event.
+    //         e.stopPropagation();
+    //     }
+    //     console.log("I have been submitted");
+    //     // console.log("I have been submitted!");
+    //     // if(_underScore.isEmpty(this.state.destinationPlace) == true){
+    //     //     console.log('destination is empty');
+    //     // }
+    //     // if(_underScore.isEmpty(this.state.originPlace) == true){
+    //     //     console.log('origin is empty');
+    //     // }
+    // }
 
     render() {
         return (
             <div>
                <Header />
                <UserInput originSelected={this.handleOriginSelected} handleChange={this.handleChange} destinationSelected = {this.handleDestinationSelected} budgetAmount={this.state.budget}
-               forSubmition={this.formSubmited}/>
+               formSubmition={this.formSubmited} prevention={this.preventSubmition}/>
             </div>
         )
     }

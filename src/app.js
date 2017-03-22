@@ -5,6 +5,7 @@ import UserInput from './components/userinput.js';
 import FlighInfo from './components/flightinfo.js';
 import {ajax,when} from 'jquery';
 const _under = require('underscore');
+const FontAwesome = require('react-fontawesome');
 
 // Helper Functions
 const getCurrentDate = () => {
@@ -36,6 +37,8 @@ class App extends React.Component {
             destinationPlace:{},
             originCityCode: "",
             destinationCityCode: "",
+            showForm: true,
+            animationWait: true,
             date: getCurrentDate()
         }
 
@@ -130,6 +133,9 @@ class App extends React.Component {
                 apikey: amadeusKey
             }
         }).then((data)=>{
+            this.rocketing.classList.remove("rocketDisplay");
+            this.rocketing.classList.remove("rocketingAnimate");
+            this.rocketing.classList.add("invisible");
             var flightInfoList = [];
             const farePrice = data.results[0].fare.total_price;
             const airline = data.results[0].itineraries[0].outbound.flights[0].marketing_airline;
@@ -138,10 +144,13 @@ class App extends React.Component {
             flightInfoList.push(airline);
             flightInfoList.push(flightNum);
             var newBudget = this.state.budget - farePrice;
+            var finalNewBudget = newBudget.toFixed(2);
             this.setState({
                 flight: flightInfoList,
-                currentBudget: newBudget
+                currentBudget: finalNewBudget
             });
+            this.resultContainer.classList.remove("invisible");
+            this.resultContainer.classList.add("visible");
         });
     }
 
@@ -161,8 +170,10 @@ class App extends React.Component {
         }
         if(this.checkErrors() === false){
             console.log('there are NO erros');
-            this.resultContainer.classList.remove("invisible");
-            this.resultContainer.classList.add("visible");
+            this.setState({
+                showForm: false,
+            });
+            this.rocketing.classList.add("rocketingAnimate");
             const cityNameOrigin = this.state.originPlace.name;
             const cityNameDestination = this.state.destinationPlace.name;
             const promise1 = this.getCityCode(cityNameOrigin, 'origin');
@@ -179,14 +190,26 @@ class App extends React.Component {
                 });
         }
     }
+
+    reloadPage(){
+        location.reload();
+    }
     render() {
+        let displayForm = "";
+        if(this.state.showForm === true){
+            displayForm = (
+                <UserInput originSelected={this.handleOriginSelected} handleChange={this.handleChange} destinationSelected = {this.handleDestinationSelected} budgetAmount={this.state.budget}
+                formSubmition={this.formSubmited} prevention={this.preventSubmition}
+                findFlights={this.submisionCompleted}/>
+            )
+        }
         return (
             <div>
-               <Header />
-               <UserInput originSelected={this.handleOriginSelected} handleChange={this.handleChange} destinationSelected = {this.handleDestinationSelected} budgetAmount={this.state.budget}
-               formSubmition={this.formSubmited} prevention={this.preventSubmition}
-               findFlights={this.submisionCompleted}/>
-               
+                <Header />
+                {displayForm}
+                <div className="rocketDisplay" ref={ ref => this.rocketing = ref}>
+                    <FontAwesome name='rocket' className="rocketing"/>
+                </div>
                <section className="resultContainer invisible" ref={ ref => this.resultContainer = ref}>
                     <div className="cityPicture">
                         <img src={this.state.destinationPlace.image} alt={this.state.destinationPlace.name}/>
@@ -195,27 +218,29 @@ class App extends React.Component {
                     <div className="infoFlight">
                         <div className="infoTitle">
                             <div className="infoAirports">
-                                <h2>{this.state.originCityCode} - {this.state.destinationCityCode}</h2>
+                                <h2 className="medBlueCol">{this.state.originCityCode} - {this.state.destinationCityCode}</h2>
                                 <h4> {this.state.originPlace.name} - {this.state.destinationPlace.name}</h4>
                             </div>
 
                             <div className="infoPrice">
-                                <h2>CAD {this.state.flight[0]}</h2>
+                                <h2>CAD <span className="medBlueCol">{this.state.flight[0]}</span></h2>
                             </div>
                         </div>
 
                         <div className="infoGeneral">
-                            <p> Flight: {this.state.flight[1]} {this.state.flight[2]}</p>
-                            <p> Date: {this.state.date} </p>
+                            <p> Flight: <span className="medBlueCol"> {this.state.flight[1]} {this.state.flight[2]} </span></p>
+                            <p> Date: <span className="medBlueCol"> {this.state.date} </span></p>
                         </div>
 
-                        <div className="infoBudget">
-                            <p>Money left: </p>
-                            <p>{this.state.currentBudget}</p>
-                        </div>
+                        <div className="moreBudget">
+                            <div className="infoBudget">
+                                <p>Money left: </p>
+                                <p className="budgetNum">{this.state.currentBudget}</p>
+                            </div>
 
-                        <div className="moreFlights">
-                            <button className="" >Budget</button>
+                            <div className="moreFlights">
+                                <button className="buttonBudget" onClick={this.reloadPage}>Budget More ></button>
+                            </div>
                         </div>
                     </div>
                </section>

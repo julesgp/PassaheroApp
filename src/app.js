@@ -151,6 +151,7 @@ class App extends React.Component {
             });
             this.resultContainer.classList.remove("invisible");
             this.resultContainer.classList.add("visible");
+            this.resultContainer.classList.add("resultContainer");
         });
     }
 
@@ -210,7 +211,8 @@ class App extends React.Component {
                 <div className="rocketDisplay" ref={ ref => this.rocketing = ref}>
                     <FontAwesome name='rocket' className="rocketing"/>
                 </div>
-               <section className="resultContainer invisible" ref={ ref => this.resultContainer = ref}>
+
+               <section className="invisible" ref={ ref => this.resultContainer = ref}>
                     <div className="cityPicture">
                         <img src={this.state.destinationPlace.image} alt={this.state.destinationPlace.name}/>
                     </div>

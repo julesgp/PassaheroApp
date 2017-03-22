@@ -153,6 +153,94 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   font-size: 60px;
   margin-left: 10px; }
 
+/* Portrait tablet and small desktops */
+@media (max-width: 1050px) {
+  section.inputContainer {
+    width: 90%; }
+  section.resultContainer {
+    width: 90%; } }
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+  section.inputContainer {
+    width: 100%; }
+  section.resultContainer {
+    width: 100%;
+    box-sizing: border-box; }
+  div.cityPicture img {
+    width: 250px;
+    height: 250px; }
+  div.infoTitle h2 {
+    font-size: 20px; }
+  div.infoTitle h4 {
+    margin: 0 auto 10px auto; }
+  div.moreBudget {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column; }
+    div.moreBudget button {
+      margin-top: 15px; } }
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  .mainHeader {
+    width: 90%; }
+    .mainHeader h1 {
+      font-size: 40px; }
+  div.inputContainer {
+    width: 100%; }
+  div.inputPlaces {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    width: 100%;
+    padding-left: 20px;
+    box-sizing: border-box; }
+  div.inputOrigin {
+    width: 100%;
+    margin: 0 auto; }
+  div.inputDestination {
+    width: 100%;
+    margin: 20px auto 10px auto;
+    margin-left: 20px; }
+  input.originUser {
+    width: 250px; }
+  input.destinationUser {
+    width: 250px; }
+  input.budgetInfo {
+    width: 100px; }
+  section.resultContainer {
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center; }
+  div.infoGeneral {
+    -ms-flex-direction: column;
+        flex-direction: column; }
+  div.moreFlights {
+    width: 100%; }
+    div.moreFlights button {
+      margin: 10px auto 10px auto; }
+  div.infoTitle {
+    width: 95%; }
+  div.infoGeneral {
+    width: 95%; }
+  div.infoBudget {
+    width: 95%; }
+  div.cityPicture {
+    width: 95%;
+    margin-bottom: 15px; }
+    div.cityPicture img {
+      width: 80%; } }
+
 .inputContainer {
   display: -ms-flexbox;
   display: flex;
@@ -265,10 +353,10 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     color: #1D2731; }
 
 .visible {
-  display: block;
   visibility: visible; }
 
 .invisible {
+  height: 5px;
   display: none;
   visibility: hidden; }
 

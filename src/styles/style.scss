@@ -59,24 +59,134 @@ $medBlue:#0B3C5D;
 // User Input
 
 /* Portrait tablet and small desktops */
-@media (max-width: 940px) {
-	.inputContainer{
-		width:80%;
+@media (max-width: 1050px) {
+	section.inputContainer{
+		width:90%;
 	}
-
+	section.resultContainer{
+		width:90%;
+	}
+	
+}
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
-	.inputContainer{
-		width:95%;
+
+	section.inputContainer{
+		width:100%;
 	}
-	body{
-		background-color: red;
+	section.resultContainer{
+		width:100%;
+		box-sizing: border-box;
+	}
+
+	div.cityPicture{
+		img{
+			width:250px;
+			height:250px;
+		}
+	}
+
+	div.infoTitle{
+		h2{
+			font-size: 20px;
+		}
+		h4{
+			margin:0 auto 10px auto;
+		}
+	}
+
+	div.moreBudget{
+		@include flex(column);
+		button{
+			margin-top:15px;
+		}
 	}
 }
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
+	.mainHeader{
+		width:90%;
+		h1{
+			font-size:40px;
+		}
+	}
+
+	div.inputContainer{
+		width:100%;
+	}
+
+	div.inputPlaces{
+		@include flex(column);
+		flex-wrap:wrap;
+		width:100%;
+		padding-left:20px;
+		box-sizing: border-box;
+	}
+
+	div.inputOrigin{
+		width:100%;
+		margin:0 auto;
+
+	}
+	
+	div.inputDestination{
+		width:100%;
+		margin:20px auto 10px auto;
+		margin-left:20px;
+	}
+
+	input.originUser{
+		width:250px;
+	}
+
+	input.destinationUser{
+		width:250px;
+	}
+
+	input.budgetInfo{
+		width:100px;
+	}
+
+	section.resultContainer{
+		flex-direction:column;
+		flex-wrap:wrap;
+		justify-content:center;
+		align-items:center;
+	}
+
+	div.infoGeneral{
+		flex-direction:column;
+	}
+
+	div.moreFlights{
+		width:100%;
+		button{
+			margin:10px auto 10px auto;
+		}
+	}
+
+	div.infoTitle{
+		width:95%;
+	}
+
+	div.infoGeneral{
+		width:95%;
+	}
+
+	div.infoBudget{
+		width:95%;
+	}
+
+	div.cityPicture{
+		width:95%;
+		margin-bottom:15px;
+		img{
+			width:80%;
+		}
+	}
+
 }
 
 .inputContainer{
@@ -172,7 +282,6 @@ $medBlue:#0B3C5D;
 }
 
 .visible{
-	display:block;
 	visibility: visible;
 }
 

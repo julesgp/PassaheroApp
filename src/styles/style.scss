@@ -59,12 +59,17 @@ $medBlue:#0B3C5D;
 // User Input
 
 .inputContainer{
+	@include flex(column);
+	justify-content:center;
 	*:focus {
 	    outline: none;
 	}
-	width:80%;
-	border: 2px solid $darkBlue;
+	width:65%;
+	border: none;
 	padding:20px 0;
+	font-family: $fontRest;
+	background-color:$medBlue;
+	color:white;
 }
 
 .initialForm{
@@ -74,39 +79,160 @@ $medBlue:#0B3C5D;
 
 .inputPlaces{
 	@include flex(row);
+	flex-wrap:wrap;
+	margin:0 auto;
 }
 
-.inputOrigin, .inputDestination, .inputBudget{
+.inputOrigin, .inputDestination{
 	@include flex(row);
 	width:50%;
-	margin:0 auto;
-	justify-content:center;
-	align-items:flex-end;
-	margin-bottom:20px;
 	font-family: $fontRest;
 	input{
-		width:55%;
+		text-align:center;
+		font-family: $fontRest;
+		color:$darkBlue;
+		padding:4px 0 5px 0;
+	}
+	input::placeholder{
+		&:onfocus{
+			color:transparent;
+		}
+		font-family: $fontRest;
+		color:$yellow
 	}
 	p{
-		width:45%;
-		margin:0;
+		margin:auto 10px auto 20px;
 	}
+}
+
+.inputBudget{
+	@include flex(row);
+	justify-content:center;
+	width:100%;
+	font-family: $fontRest;
+	margin:20px auto 10px auto;
+	input{
+		text-align:center;
+		font-family: $fontRest;
+		color:$darkBlue;
+		padding:8px;
+	}
+	input::placeholder{
+		&:onfocus{
+			color:transparent;
+		}
+		font-family: $fontRest;
+		color:$yellow;
+	}
+	p{
+		margin:auto 10px auto 10px;
+	}
+}
+
+.originUser, .destinationUser, .budgetInfo{
+	height:100%;
+	width:300px;
+	background-color:white;
+	border:none;
+
 }
 
 .findFlights{
-	width:30%;
-	margin:0 auto;
+	width:20%;
+	margin:15px auto 5px auto;
+	padding:8px 0 8px 0;
+	background-color:$darkBlue;
+	color:white;
+	border:none;
+	&:hover{
+		background-color:$lightBlue;
+		color:$darkBlue;
+	}
 }
 
 .visible{
 	display:block;
+	visibility: visible;
 }
 
 .invisible{
 	display:none;
+	visibility: hidden;
 }
 
-.originUser{
-	height:100%;
-	width:50px;
+// result Container
+
+.resultContainer{
+	@include flex(row);
+	width:80%;
+	border:2px solid $medBlue;
+	margin:20px auto 0 auto;
+	font-family: $fontRest;
+
+}
+
+.cityPicture{
+	img{
+		width:100%;
+		height:350px;
+	}
+	width:35%;
+	border:2px solid $medBlue;
+}
+
+.infoFlight{
+	@include flex(column);
+	width:65%;
+	border:2px solid $medBlue;
+}
+
+.infoTitle{
+	h2{
+		font-family: $fontTitle;
+		font-size: 30px;
+		margin:auto;
+	}
+	h4{
+		margin:0 auto 10px auto;
+	}
+	@include flex(row);
+	border:2px solid $medBlue;
+}
+
+.infoAirports{
+	@include flex(column);
+	align-items:center;
+	width:60%;
+	border:2px solid $medBlue;
+
+}
+
+.infoPrice{
+	@include flex(column);
+	align-items:center;
+	margin:0 auto;
+	width:40%;
+	border:2px solid $medBlue;
+
+}
+
+.infoGeneral{
+	@include flex(row);
+	align-items:center;
+	border:2px solid $medBlue;
+	p{
+		margin:5px auto 10px auto;
+	}
+}
+
+.infoBudget{
+	@include flex(row);
+	justify-content:center;
+	width:100%;
+	border:2px solid $medBlue;
+}
+
+.moreFlights{
+	margin:0 auto;
+	border:2px solid $medBlue;
 }

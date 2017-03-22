@@ -25,6 +25,7 @@
     "react-dom": "^15.4.2",
     "react-fontawesome": "^1.5.0",
     "react-google-autocomplete": "^1.0.12",
+    "react-places-autocomplete": "^4.1.1",
     "sabre-dev-studio": "^1.2.0",
     "underscore": "^1.8.3",
     "vinyl-buffer": "^1.0.0",

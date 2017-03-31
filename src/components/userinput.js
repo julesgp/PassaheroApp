@@ -16,23 +16,23 @@ export default class InputField extends React.Component{
 				<form className="initialForm" onSubmit={this.props.formSubmited}>
 					<div className='inputPlaces'>
 						<div className="inputOrigin">
-							<p>From</p>
+							<h3>From</h3>
 							<Autocomplete className="originUser"
 							    onPlaceSelected={this.props.originSelected}
-							    types={['(cities)']} placeholder="Enter Location"/>
+							    types={['(cities)']} placeholder="Location"/>
 						</div>
 						<div className='inputDestination'>
-							<p>To</p>
-							<Autocomplete className="destinationUser" onPlaceSelected = {this.props.destinationSelected} types={['(cities)']} placeholder="Enter Destination"/>
+							<h3>To</h3>
+							<Autocomplete className="destinationUser" onPlaceSelected = {this.props.destinationSelected} types={['(cities)']} placeholder="Destination"/>
+						</div>
+
+						<div className='inputBudget'>
+							<h3>Budget</h3>
+							<input type= "text" placeholder="CAD" onChange={this.props.handleChange} value={this.props.budgetAmount} className="budgetInfo"/>
 						</div>
 					</div>
-
-					<div className='inputBudget'>
-						<p>Budget</p>
-						<input type= "text" placeholder="CAD" onChange={this.props.handleChange} value={this.props.budgetAmount} className="budgetInfo"/>
-					</div>
 				</form>
-				<button className="findFlights" onClick={this.props.findFlights}>Budget</button>
+				<button className="findFlights" onClick={this.props.findFlights}>Calculate</button>
 			</section>
 		)
 	}

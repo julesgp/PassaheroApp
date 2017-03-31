@@ -38,7 +38,8 @@ class App extends React.Component {
             originCityCode: "",
             destinationCityCode: "",
             showForm: true,
-            animationWait: true,
+            animationDisplay:false,
+            headerDisplay: true,
             date: getCurrentDate()
         }
 
@@ -133,9 +134,6 @@ class App extends React.Component {
                 apikey: amadeusKey
             }
         }).then((data)=>{
-            this.rocketing.classList.remove("rocketDisplay");
-            this.rocketing.classList.remove("rocketingAnimate");
-            this.rocketing.classList.add("invisible");
             var flightInfoList = [];
             const farePrice = data.results[0].fare.total_price;
             const airline = data.results[0].itineraries[0].outbound.flights[0].marketing_airline;
@@ -146,6 +144,8 @@ class App extends React.Component {
             var newBudget = this.state.budget - farePrice;
             var finalNewBudget = newBudget.toFixed(2);
             this.setState({
+                animationDisplay: false,
+                headerDisplay: false,
                 flight: flightInfoList,
                 currentBudget: finalNewBudget
             });
@@ -173,8 +173,8 @@ class App extends React.Component {
             console.log('there are NO erros');
             this.setState({
                 showForm: false,
+                animationDisplay: true,
             });
-            this.rocketing.classList.add("rocketingAnimate");
             const cityNameOrigin = this.state.originPlace.name;
             const cityNameDestination = this.state.destinationPlace.name;
             const promise1 = this.getCityCode(cityNameOrigin, 'origin');
@@ -204,44 +204,62 @@ class App extends React.Component {
                 findFlights={this.submisionCompleted}/>
             )
         }
-        return (
-            <div>
-                <Header />
-                {displayForm}
-                <div className="rocketDisplay" ref={ ref => this.rocketing = ref}>
-                    <FontAwesome name='rocket' className="rocketing"/>
-                </div>
 
+        let animationDisplay = "";
+        if(this.state.animationDisplay === true){
+            animationDisplay = (
+                <div className="loadingContainer">
+                     <FontAwesome name="circle" className="loadingOne"/>
+                     <FontAwesome name="circle" className="loadingTwo"/>
+                     <FontAwesome name="circle" className="loadingThree"/>
+                </div>   
+            )
+        }
+
+        let headerDisplay = "";
+        if(this.state.headerDisplay === true){
+            headerDisplay = (
+                <Header />   
+            )
+        }
+        return (
+            <div className="mainDiv">
+                {headerDisplay}
+                {displayForm}
+                {animationDisplay}
                <section className="invisible" ref={ ref => this.resultContainer = ref}>
                     <div className="cityPicture">
                         <img src={this.state.destinationPlace.image} alt={this.state.destinationPlace.name}/>
                     </div>
 
                     <div className="infoFlight">
-                        <div className="infoTitle">
-                            <div className="infoAirports">
-                                <h2 className="medBlueCol">{this.state.originCityCode} - {this.state.destinationCityCode}</h2>
-                                <h4> {this.state.originPlace.name} - {this.state.destinationPlace.name}</h4>
+                        <div className="flightWrapper">
+                            
+                            <div className="infoTitle">
+                                <div className="infoAirports">
+                                    <h2 className="medBlueCol">{this.state.originCityCode} - {this.state.destinationCityCode}</h2>
+                                    <h4> {this.state.originPlace.name} - {this.state.destinationPlace.name}</h4>
+                                </div>
+
+                                <div className="infoGeneral">
+                                    <p> Flight: <span className="medBlueCol"> {this.state.flight[1]} {this.state.flight[2]} </span></p>
+                                    <p> Date: <span className="medBlueCol"> {this.state.date} </span></p>
+                                </div>
+
+                                <div className="infoPrice">
+                                    <h2>CAD <span className="medBlueCol">{this.state.flight[0]}</span></h2>
+                                </div>
                             </div>
 
-                            <div className="infoPrice">
-                                <h2>CAD <span className="medBlueCol">{this.state.flight[0]}</span></h2>
-                            </div>
-                        </div>
+                            <div className="moreBudget">
+                                <div className="infoBudget">
+                                    <p>Money left: </p>
+                                    <p className="budgetNum">{this.state.currentBudget}</p>
+                                </div>
 
-                        <div className="infoGeneral">
-                            <p> Flight: <span className="medBlueCol"> {this.state.flight[1]} {this.state.flight[2]} </span></p>
-                            <p> Date: <span className="medBlueCol"> {this.state.date} </span></p>
-                        </div>
-
-                        <div className="moreBudget">
-                            <div className="infoBudget">
-                                <p>Money left: </p>
-                                <p className="budgetNum">{this.state.currentBudget}</p>
-                            </div>
-
-                            <div className="moreFlights">
-                                <button className="buttonBudget" onClick={this.reloadPage}>Budget More ></button>
+                                <div className="moreFlights">
+                                    <button className="buttonBudget" onClick={this.reloadPage}>Budget More ></button>
+                                </div>
                             </div>
                         </div>
                     </div>

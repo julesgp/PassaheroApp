@@ -121,6 +121,15 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   width: 90%;
   margin: 0 auto; }
 
+body {
+  background-image: url("./images/3824.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh; }
+
+header {
+  margin-top: 160px; }
+
 .headerStyle {
   letter-spacing: 3px;
   width: 100%; }
@@ -134,19 +143,20 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
       flex-direction: column;
   width: 60%; }
   .mainHeader h1 {
-    margin: 20px 0 0 0;
+    width: 80%;
+    margin: 0 auto;
     padding: 0;
     color: #0B3C5D;
     font-family: "Quicksand", sans-serif;
     font-size: 70px;
-    border-bottom: 5px solid #D9B310; }
+    text-align: center; }
   .mainHeader p {
-    margin: 0 0 20px 0;
-    padding: 5px 0;
+    margin: 0 auto;
     font-family: "Open Sans", sans-serif;
     color: #0B3C5D;
     text-align: right;
-    padding-right: 20px; }
+    padding-right: 20px;
+    font-size: 17px; }
 
 .logoto {
   color: #D9B310;
@@ -248,14 +258,16 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
       flex-direction: column;
   -ms-flex-pack: center;
       justify-content: center;
-  width: 65%;
+  width: 90%;
   border: none;
   padding: 20px 0;
+  margin-top: 25px;
   font-family: "Open Sans", sans-serif;
-  background-color: #0B3C5D;
-  color: white; }
+  color: #0B3C5D; }
   .inputContainer *:focus {
     outline: none; }
+  .inputContainer h3 {
+    margin: 0; }
 
 .initialForm {
   display: -ms-flexbox;
@@ -268,8 +280,10 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   display: flex;
   -ms-flex-direction: row;
       flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
   margin: 0 auto; }
 
 .inputOrigin, .inputDestination {
@@ -277,30 +291,37 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   display: flex;
   -ms-flex-direction: row;
       flex-direction: row;
-  width: 50%;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  width: 75%;
   font-family: "Open Sans", sans-serif; }
   .inputOrigin input, .inputDestination input {
     text-align: center;
     font-family: "Open Sans", sans-serif;
     color: #1D2731;
-    padding: 4px 0 5px 0; }
+    height: 35px;
+    border-radius: 40px;
+    margin-right: 10px; }
   .inputOrigin input::-webkit-input-placeholder, .inputDestination input::-webkit-input-placeholder {
     font-family: "Open Sans", sans-serif;
-    color: #D9B310; }
+    color: lightgray; }
   .inputOrigin input:-ms-input-placeholder, .inputDestination input:-ms-input-placeholder {
     font-family: "Open Sans", sans-serif;
-    color: #D9B310; }
+    color: lightgray; }
   .inputOrigin input::placeholder, .inputDestination input::placeholder {
     font-family: "Open Sans", sans-serif;
-    color: #D9B310; }
+    color: lightgray; }
     .inputOrigin input::-webkit-input-placeholder:onfocus, .inputDestination input::-webkit-input-placeholder:onfocus {
       color: transparent; }
     .inputOrigin input:-ms-input-placeholder:onfocus, .inputDestination input:-ms-input-placeholder:onfocus {
       color: transparent; }
     .inputOrigin input::placeholder:onfocus, .inputDestination input::placeholder:onfocus {
       color: transparent; }
-  .inputOrigin p, .inputDestination p {
-    margin: auto 10px auto 20px; }
+  .inputOrigin h3, .inputDestination h3 {
+    margin-right: 10px;
+    margin-left: 20px; }
 
 .inputBudget {
   display: -ms-flexbox;
@@ -309,31 +330,36 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
       flex-direction: row;
   -ms-flex-pack: center;
       justify-content: center;
-  width: 100%;
+  -ms-flex-align: center;
+      align-items: center;
+  width: 25%;
   font-family: "Open Sans", sans-serif;
-  margin: 20px auto 10px auto; }
+  margin: 30px auto; }
   .inputBudget input {
     text-align: center;
     font-family: "Open Sans", sans-serif;
     color: #1D2731;
-    padding: 8px; }
+    padding: 8px;
+    width: 150px;
+    border-radius: 40px; }
   .inputBudget input::-webkit-input-placeholder {
     font-family: "Open Sans", sans-serif;
-    color: #D9B310; }
+    color: lightgray; }
   .inputBudget input:-ms-input-placeholder {
     font-family: "Open Sans", sans-serif;
-    color: #D9B310; }
+    color: lightgray; }
   .inputBudget input::placeholder {
     font-family: "Open Sans", sans-serif;
-    color: #D9B310; }
+    color: lightgray; }
     .inputBudget input::-webkit-input-placeholder:onfocus {
       color: transparent; }
     .inputBudget input:-ms-input-placeholder:onfocus {
       color: transparent; }
     .inputBudget input::placeholder:onfocus {
       color: transparent; }
-  .inputBudget p {
-    margin: auto 10px auto 10px; }
+  .inputBudget h3 {
+    margin-right: 10px;
+    margin-left: 20px; }
 
 .originUser, .destinationUser, .budgetInfo {
   height: 100%;
@@ -342,15 +368,17 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   border: none; }
 
 .findFlights {
+  margin: 20px auto;
   width: 20%;
-  margin: 15px auto 5px auto;
-  padding: 8px 0 8px 0;
+  padding: 12px 0;
+  width: 150px;
   background-color: #1D2731;
   color: white;
-  border: none; }
+  border: none;
+  border-radius: 40px; }
   .findFlights:hover {
-    background-color: #328CC1;
-    color: #1D2731; }
+    background-color: #0B3C5D;
+    color: white; }
 
 .visible {
   visibility: visible; }
@@ -363,21 +391,19 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 .resultContainer {
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
-  width: 80%;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  width: 70%;
   border: 2px solid #0B3C5D;
   margin: 20px auto 0 auto;
   font-family: "Open Sans", sans-serif;
-  background-color: #1D2731;
-  padding: 15px; }
+  background-color: #0B3C5D;
+  padding: 15px;
+  opacity: 0.8; }
 
 .cityPicture {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
-  width: 35%;
+  margin: 30px auto 0 auto;
+  width: 95%;
   border: none; }
   .cityPicture img {
     width: 100%;
@@ -389,9 +415,22 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   display: flex;
   -ms-flex-direction: column;
       flex-direction: column;
-  -ms-flex-pack: center;
-      justify-content: center;
-  width: 65%; }
+  width: 95%;
+  margin: 0 auto; }
+
+.flightWrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: left;
+      justify-content: left;
+  -ms-flex-align: center;
+      align-items: center;
+  width: 100%;
+  background-color: white;
+  padding: 40px 0;
+  margin: 0 auto 30px auto; }
 
 .infoTitle {
   display: -ms-flexbox;
@@ -399,8 +438,8 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -ms-flex-direction: row;
       flex-direction: row;
   width: 80%;
-  margin: 0 auto;
   padding: 10px;
+  margin: 0 auto;
   background-color: white;
   color: #D9B310; }
   .infoTitle h2 {
@@ -418,7 +457,11 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
       flex-direction: column;
   -ms-flex-align: center;
       align-items: center;
-  width: 60%; }
+  width: 40%; }
+  .infoAirports h2 {
+    font-size: 35px; }
+  .infoAirports h4 {
+    margin: 0; }
 
 .infoPrice {
   display: -ms-flexbox;
@@ -427,21 +470,18 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
       flex-direction: column;
   -ms-flex-align: center;
       align-items: center;
-  margin: 0 auto;
-  width: 40%; }
+  width: 35%; }
   .infoPrice h2 {
     color: #D9B310; }
 
 .infoGeneral {
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
-  -ms-flex-align: center;
-      align-items: center;
-  width: 60%;
-  margin: 20px auto 20px auto;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  width: 25%;
   color: #328CC1;
+  margin: 0 auto;
   background-color: white; }
   .infoGeneral p {
     color: #D9B310;
@@ -463,10 +503,9 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     margin: 10px 5px; }
 
 .budgetNum {
-  background-color: #D9B310;
-  color: #1D2731;
+  color: #D9B310;
   padding: 5px;
-  font-size: 20px; }
+  font-size: 30px; }
 
 .moreFlights {
   display: -ms-flexbox;
@@ -491,31 +530,40 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   margin: 0 auto; }
 
 .buttonBudget {
-  background-color: #328CC1;
+  background-color: #1D2731;
+  color: white;
   font-size: 18px;
-  padding: 10px;
-  border: none; }
+  padding: 10px 15px;
+  border: none;
+  border-radius: 40px; }
   .buttonBudget:hover {
     background-color: #0B3C5D;
-    color: #328CC1; }
+    color: white; }
 
-.rocketDisplay {
+.loadingContainer {
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
-  width: 80%;
-  margin: 0 auto; }
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: center;
+      align-items: center;
+  font-size: 30px;
+  margin: 0 auto;
+  width: 150px;
+  padding: 50px 10px; }
 
-.rocketing {
-  margin-top: 30px;
-  font-size: 150px; }
+.loadingOne {
+  animation: rocketMoving 9s infinite; }
 
-.rocketingAnimate {
-  margin-top: 25px;
-  font-size: 200px;
-  animation: rocketMoving 10s infinite;
-  transform: rotate(-45deg); }
+.loadingTwo {
+  animation: rocketMoving 9s infinite;
+  animation-delay: 0.5s; }
+
+.loadingThree {
+  animation: rocketMoving 9s infinite;
+  animation-delay: 1.5s; }
 
 @keyframes rocketMoving {
   0% {
@@ -540,4 +588,4 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
     opacity: 0; }
   100% {
     opacity: 1;
-    color: #D9B310; } }
+    color: #328CC1; } }
